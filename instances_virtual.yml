@@ -5,7 +5,7 @@ deployment:
             registry: hub.juniper.net/contrail-nightly
     sku: queens
     os: centos7
-    version: 1909.13-rhel-queens
+    version: 1909.13
     orchestrator: kubernetes
     deployer: contrail-ansible-deployer
 provider_config:
@@ -81,7 +81,7 @@ contrail_configuration:
   CONTAINER_REGISTRY_USERNAME: JNPR-Customer200
   CONTAINER_REGISTRY_PASSWORD: FSg0vLW^7oM#GZy8Ju*f
   REGISTRY_PRIVATE_INSECURE: False
-  CONTRAIL_VERSION: 1909.13-rhel-queens
+  CONTRAIL_VERSION: 1909.13
   RABBITMQ_NODE_PORT: 5673
   VROUTER_GATEWAY: 192.168.1.11
   JVM_EXTRA_OPTS: "-Xms1g -Xmx2g"

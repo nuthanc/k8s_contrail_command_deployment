@@ -2,10 +2,6 @@
 # Insecure and secure logic
 if [ $INSECURE -eq 1 ]
 then
-    echo "{"insecure-registries": ["10.204.217.152:5010","10.204.217.152:5000"]}" > /etc/docker/daemon.json
-    systemctl reload docker
-    export CCD_IMAGE=10.204.217.152:5010/contrail-command-deployer:$TAG
-
     # Changes in the command_servers.yml file and note the single quote and double quote differences
     sed -i 's/registry_insecure\: false/registry_insecure\: true/g' $COMMAND_SERVERS_FILE
     sed -i "s/container_registry_username/# container_registry_username/g" $COMMAND_SERVERS_FILE
@@ -23,9 +19,6 @@ then
     sed -i "s/CONTRAIL_VERSION: .*/CONTRAIL_VERSION: ${CONTRAIL_VERSION}/g" $INSTANCES_FILE
 
 else
-    export CCD_IMAGE=hub.juniper.net/contrail-nightly/contrail-command-deployer:$TAG
-    docker login hub.juniper.net -u $CONTAINER_REGISTRY_USERNAME -p $CONTAINER_REGISTRY_PASSWORD
-
     # Changes in the command_servers.yml file and note the single quote and double quote differences
     sed -i 's/registry_insecure\: true/registry_insecure\: false/g' $COMMAND_SERVERS_FILE
     sed -i 's/# container_registry_username/container_registry_username/g' $COMMAND_SERVERS_FILE
