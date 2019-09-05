@@ -2,10 +2,10 @@ deployment:
     type:
         contrail:
             branch: master
-            registry: hub.juniper.net/contrail-nightly
+            registry: 10.204.217.152:5000
     sku: queens
     os: centos7
-    version: 1909.13
+    version: 1909-4
     orchestrator: kubernetes
     deployer: contrail-ansible-deployer
 
@@ -58,10 +58,10 @@ instances:
       vrouter:
         VROUTER_GATEWAY: 77.77.1.100
 
-REGISTRY_PRIVATE_INSECURE: False
-CONTAINER_REGISTRY: hub.juniper.net/contrail-nightly
-CONTAINER_REGISTRY_USERNAME: JNPR-Customer200
-CONTAINER_REGISTRY_PASSWORD: FSg0vLW^7oM#GZy8Ju*f
+REGISTRY_PRIVATE_INSECURE: True
+CONTAINER_REGISTRY: 10.204.217.152:5000
+# CONTAINER_REGISTRY_USERNAME: JNPR-Customer200
+# CONTAINER_REGISTRY_PASSWORD: FSg0vLW^7oM#GZy8Ju*f
 
 contrail_configuration:
   KUBERNETES_PUBLIC_FIP_POOL: {'project': 'default', 'domain': 'default-domain', 'name': '__fip_pool_public__', 'network': '__public__'}
@@ -71,11 +71,11 @@ contrail_configuration:
   CONTROL_NODES: 77.77.1.20,77.77.1.30,77.77.1.11
   KUBERNETES_API_NODES: 77.77.1.20
   KUBERNETES_API_SERVER: 77.77.1.20
-  CONTAINER_REGISTRY: hub.juniper.net/contrail-nightly
-  CONTAINER_REGISTRY_USERNAME: JNPR-Customer200
-  CONTAINER_REGISTRY_PASSWORD: FSg0vLW^7oM#GZy8Ju*f
-  REGISTRY_PRIVATE_INSECURE: False
-  CONTRAIL_VERSION: 1909.13
+  CONTAINER_REGISTRY: 10.204.217.152:5000
+  # CONTAINER_REGISTRY_USERNAME: JNPR-Customer200
+  # CONTAINER_REGISTRY_PASSWORD: FSg0vLW^7oM#GZy8Ju*f
+  REGISTRY_PRIVATE_INSECURE: True
+  CONTRAIL_VERSION: 1909-4
   RABBITMQ_NODE_PORT: 5673
   VROUTER_GATEWAY: 77.77.1.100
   JVM_EXTRA_OPTS: "-Xms1g -Xmx2g"
