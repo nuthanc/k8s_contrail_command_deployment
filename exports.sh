@@ -1,6 +1,7 @@
 #!/bin/sh
 export INSECURE=0 # Make this 0 if hub.juniper.net is used
-export TAG=1909.13 # Use the appropriate tag
+export TAG=1909.13 # Use the appropriate tag for contrail-command
+export CONTRAIL_VERSION: 1909.13
 export COMMAND_SERVER_IP=10.204.216.120 #THIS IS nodea4
 # The below two if hub.juniper.net is used
 export CONTAINER_REGISTRY_USERNAME=JNPR-Customer200
