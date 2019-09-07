@@ -4,6 +4,7 @@ if [ $INSECURE -eq 1 ]
 then
     # Changes in the command_servers.yml file and note the single quote and double quote differences
     sed -i 's/registry_insecure\: false/registry_insecure\: true/g' $COMMAND_SERVERS_FILE
+    echo "Modify this as this doesn't work when INSECURE is used twice"
     sed -i "s/container_registry_username/# container_registry_username/g" $COMMAND_SERVERS_FILE
     sed -i "s/container_registry_password/# container_registry_password/g" $COMMAND_SERVERS_FILE
     sed -i 's/hub.juniper.net\/contrail-nightly/10.204.217.152:5000/g' $COMMAND_SERVERS_FILE
