@@ -14,11 +14,13 @@ echo "Jenkins Workspace: $WORKSPACE"
 
 
 sshpass -p 'c0ntrail123' ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -l root nodea4.englab.juniper.net "(
+    export WORKSPACE=$WORKSPACE
+
     if [ -d "/root/Nuthan_jenkins" ]
     then
         rm -rf /root/Nuthan_jenkins
     fi
-    sshpass - p scp 'c0ntrail123' -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -r $WORKSPACE/ root@nodea4.englab.juniper.net:/root/Nuthan_jenkins
+    cp -r ${WORKSPACE}/ /root/Nuthan_jenkins
 
     export INSECURE=$INSECURE 
     export TAG=$TAG 
@@ -33,7 +35,6 @@ sshpass -p 'c0ntrail123' ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/
     export COMMAND_SERVERS_FILE=$COMMAND_SERVERS_FILE
     export INSTANCES_FILE=$INSTANCES_FILE
     export WORKING_DIR=$WORKING_DIR
-    export WORKSPACE=$WORKSPACE
 
     set -e
     
