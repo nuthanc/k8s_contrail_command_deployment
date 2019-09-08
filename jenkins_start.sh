@@ -17,9 +17,9 @@ sshpass -p 'c0ntrail123' ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/
     if [ -d "/root/Nuthan_jenkins"]
     then
         rm -rf /root/Nuthan_jenkins
-    else
-        sshpass - p scp 'c0ntrail123' -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -r $WORKSPACE/ root@nodea4.englab.juniper.net:/root/Nuthan_jenkins
     fi
+    sshpass - p scp 'c0ntrail123' -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -r $WORKSPACE/ root@nodea4.englab.juniper.net:/root/Nuthan_jenkins
+
     export INSECURE=$INSECURE 
     export TAG=$TAG 
     export CONTRAIL_VERSION=$CONTRAIL_VERSION
