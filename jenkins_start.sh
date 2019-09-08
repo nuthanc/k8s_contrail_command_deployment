@@ -23,6 +23,9 @@ sshpass -p 'c0ntrail123' ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/
     export IMPORT=$IMPORT
     export VIRTUAL_SETUP=$VIRTUAL_SETUP 
     export REIMAGE=$REIMAGE
+    export COMMAND_SERVERS_FILE=$COMMAND_SERVERS_FILE
+    export INSTANCES_FILE=$INSTANCES_FILE
+    export WORKING_DIR=$WORKING_DIR
     export WORKSPACE=$WORKSPACE
 
     set -e
