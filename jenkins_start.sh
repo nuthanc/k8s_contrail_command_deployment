@@ -11,7 +11,7 @@ fi
 
 # Add nodea4 ssh-pass 
 echo "Jenkins Workspace: $WORKSPACE"
-sshpass -p 'c0ntrail123' scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -r $WORKSPACE/Nuthan_contrail_command root@nodea4.englab.juniper.net:/root/Nuthan_jenkins
+sshpass -p 'c0ntrail123' scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -r $WORKSPACE/ root@nodea4.englab.juniper.net:/root/Nuthan_jenkins
 sshpass -p 'c0ntrail123' ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -l root nodea4.englab.juniper.net "(
     cd /root/Nuthan_jenkins
     echo $PROVISION
