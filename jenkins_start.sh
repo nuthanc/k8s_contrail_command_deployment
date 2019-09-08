@@ -13,11 +13,23 @@ fi
 echo "Jenkins Workspace: $WORKSPACE"
 sshpass -p 'c0ntrail123' scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -r $WORKSPACE/ root@nodea4.englab.juniper.net:/root/Nuthan_jenkins
 sshpass -p 'c0ntrail123' ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -l root nodea4.englab.juniper.net "(
+    export INSECURE=$INSECURE 
+    export TAG=$TAG 
+    export CONTRAIL_VERSION=$CONTRAIL_VERSION
+    export COMMAND_SERVER_IP=$COMMAND_SERVER_IP
+    export CONTAINER_REGISTRY_USERNAME=$CONTAINER_REGISTRY_USERNAME
+    export CONTAINER_REGISTRY_PASSWORD=$CONTAINER_REGISTRY_PASSWORD
+    export PROVISION=$PROVISION
+    export IMPORT=$IMPORT
+    export VIRTUAL_SETUP=$VIRTUAL_SETUP 
+    export REIMAGE=$REIMAGE
+    export WORKSPACE=$WORKSPACE
+    
     set -e
     cd $WORKING_DIR
     source exports.sh
     source provision_contrail_command.sh
-    echo $PROVISION
+    
 )"
 
 # source exports.sh
