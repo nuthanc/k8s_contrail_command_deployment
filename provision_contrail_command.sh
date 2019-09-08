@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -ex 
 
 # This file is until step 9
 # Install docker
