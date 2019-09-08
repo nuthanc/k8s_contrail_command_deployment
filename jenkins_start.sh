@@ -13,9 +13,11 @@ fi
 echo "Jenkins Workspace: $WORKSPACE"
 sshpass -p 'c0ntrail123' scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -r $WORKSPACE/ root@nodea4.englab.juniper.net:/root/Nuthan_jenkins
 sshpass -p 'c0ntrail123' ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -l root nodea4.englab.juniper.net "(
-    cd /root/Nuthan_jenkins
+    set -e
+    cd $WORKING_DIR
+    source exports.sh
+    source provision_contrail_command.sh
     echo $PROVISION
-    
 )"
 
 # source exports.sh
