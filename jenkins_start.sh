@@ -29,7 +29,7 @@ sshpass -p 'c0ntrail123' ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/
     export WORKSPACE=$WORKSPACE
 
     set -e
-    cd $WORKING_DIR
+    
     source ${WORKING_DIR}/exports.sh
     source ${WORKING_DIR}/provision_contrail_command.sh
     
