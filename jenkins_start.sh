@@ -14,7 +14,7 @@ echo "Jenkins Workspace: $WORKSPACE"
 
 
 sshpass -p 'c0ntrail123' ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -l root nodea4.englab.juniper.net "(
-    if [ -d "/root/Nuthan_jenkins"]
+    if [ -d "/root/Nuthan_jenkins" ]
     then
         rm -rf /root/Nuthan_jenkins
     fi
