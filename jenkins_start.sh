@@ -3,7 +3,7 @@
 # Add server-manager reimage commands here if REIMAGE is 1. Use sshpass
 if [ $REIMAGE -eq 1 ]
 then 
-    sshpass -p 'c0ntrail123' ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -l root noden11.englab.juniper.net "(
+    sshpass -p 'c0ntrail123' ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@noden11.englab.juniper.net "(
     set -e 
     server-manager reimage --no_confirm --cluster_id k8s_nodeg12_ha_setup centos-7.6
     )"
