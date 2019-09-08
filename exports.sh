@@ -6,7 +6,7 @@ export COMMAND_SERVER_IP=${COMMAND_SERVER_IP:-10.204.216.120} #THIS IS nodea4
 # The below two if hub.juniper.net is used
 export CONTAINER_REGISTRY_USERNAME=${CONTAINER_REGISTRY_USERNAME:-JNPR-Customer200}
 export CONTAINER_REGISTRY_PASSWORD=${CONTAINER_REGISTRY_PASSWORD:-FSg0vLW^7oM#GZy8Ju*f}
-
+export REIMAGE=${REIMAGE:-0}
 export VIRTUAL_SETUP=${VIRTUAL_SETUP:-1} # Make this 0 if nodeg12 setup is used
 
 export COMMAND_SERVERS_FILE=/${HOME}/k8s_contrail_command_deployment/command_servers.yml
@@ -19,6 +19,6 @@ else
     export INSTANCES_FILE=/${HOME}/k8s_contrail_command_deployment/instances.yml 
 fi
 # Set both below as 0 when No Action is required
-export PROVISION=1
-export IMPORT=0
+export PROVISION=${PROVISION:-1}
+export IMPORT=${PROVISION:-0}
 echo "INSECURE=$INSECURE, TAG=$TAG, COMMAND_SERVER_IP=$COMMAND_SERVER_IP, PROVISION=$PROVISION, IMPORT=$IMPORT, C_FILE=$COMMAND_SERVERS_FILE, I_FILE=$INSTANCES_FILE"
