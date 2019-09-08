@@ -14,14 +14,19 @@ echo "Jenkins Workspace: $WORKSPACE"
 
 
 sshpass -p 'c0ntrail123' ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -l root nodea4.englab.juniper.net "(
-    export WORKSPACE=$WORKSPACE
+    set -e
 
     if [ -d "/root/Nuthan_jenkins" ]
     then
         rm -rf /root/Nuthan_jenkins
     fi
-    cp -r ${WORKSPACE}/ /root/Nuthan_jenkins
+)"
 
+sshpass -p 'c0ntrail123' scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -r $WORKSPACE/ root@nodea4.englab.juniper.net:/root/Nuthan_jenkins
+
+sshpass -p 'c0ntrail123' ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -l root nodea4.englab.juniper.net "(
+
+    export WORKSPACE=$WORKSPACE
     export INSECURE=$INSECURE 
     export TAG=$TAG 
     export CONTRAIL_VERSION=$CONTRAIL_VERSION
@@ -36,7 +41,8 @@ sshpass -p 'c0ntrail123' ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/
     export INSTANCES_FILE=$INSTANCES_FILE
     export WORKING_DIR=$WORKING_DIR
 
-    set -e
+    docker stop contrail_command contrail_psql
+    docker system prune -f
     
     source ${WORKING_DIR}/exports.sh
     source ${WORKING_DIR}/provision_contrail_command.sh
