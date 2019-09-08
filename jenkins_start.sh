@@ -24,11 +24,11 @@ sshpass -p 'c0ntrail123' ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/
     export VIRTUAL_SETUP=$VIRTUAL_SETUP 
     export REIMAGE=$REIMAGE
     export WORKSPACE=$WORKSPACE
-    
+
     set -e
     cd $WORKING_DIR
-    source exports.sh
-    source provision_contrail_command.sh
+    source ${WORKING_DIR}/exports.sh
+    source ${WORKING_DIR}/provision_contrail_command.sh
     
 )"
 
