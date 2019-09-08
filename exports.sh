@@ -19,6 +19,6 @@ else
     export INSTANCES_FILE=/${HOME}/k8s_contrail_command_deployment/instances.yml 
 fi
 # Set both below as 0 when No Action is required
-export PROVISION=${PROVISION:-1}
+export PROVISION=${PROVISION:-0}
 export IMPORT=${PROVISION:-0}
 echo "INSECURE=$INSECURE, TAG=$TAG, COMMAND_SERVER_IP=$COMMAND_SERVER_IP, PROVISION=$PROVISION, IMPORT=$IMPORT, C_FILE=$COMMAND_SERVERS_FILE, I_FILE=$INSTANCES_FILE"
