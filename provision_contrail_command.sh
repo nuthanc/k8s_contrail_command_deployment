@@ -19,7 +19,7 @@ sed -i "s/ip: .*/ip: ${COMMAND_SERVER_IP}/g" $COMMAND_SERVERS_FILE
 # Insecure and secure logic
 if [ $INSECURE -eq 1 ]
 then
-    echo "{"insecure-registries": ["10.204.217.152:5010","10.204.217.152:5000"]}" > /etc/docker/daemon.json
+    echo '{"insecure-registries": ["10.204.217.152:5010","10.204.217.152:5000"]}' > /etc/docker/daemon.json
     systemctl reload docker
     export CCD_IMAGE=10.204.217.152:5010/contrail-command-deployer:$TAG
 
