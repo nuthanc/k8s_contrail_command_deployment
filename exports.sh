@@ -13,7 +13,7 @@ export COMMAND_SERVERS_FILE=${COMMAND_SERVERS_FILE:-${HOME}/k8s_contrail_command
 
 if [ $VIRTUAL_SETUP -eq 1 ]
 then 
-    export INSTANCES_FILE=${INSTANCES_FILE:${HOME}/k8s_contrail_command_deployment/instances_virtual.yml}
+    export INSTANCES_FILE=${INSTANCES_FILE:-${HOME}/k8s_contrail_command_deployment/instances_virtual.yml}
 else
     # Change this to instances_mgmt.yml if management ip needs to be used
     export INSTANCES_FILE=${INSTANCES_FILE:-${HOME}/k8s_contrail_command_deployment/instances.yml}
