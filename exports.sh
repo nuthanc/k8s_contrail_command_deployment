@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -ex
 export INSECURE=${INSECURE:-1} # Make this 0 if hub.juniper.net is used
 export TAG=${TAG:-1909-13} # Use the appropriate tag for contrail-command
 export CONTRAIL_VERSION=${CONTRAIL_VERSION:-1909-13}
@@ -13,7 +13,7 @@ export COMMAND_SERVERS_FILE=${COMMAND_SERVERS_FILE:-${HOME}/k8s_contrail_command
 
 if [ $VIRTUAL_SETUP -eq 1 ]
 then 
-    export INSTANCES_FILE=${INSTANCES_FILE:-${HOME}/k8s_contrail_command_deployment/instances_virtual.yml}
+    export INSTANCES_FILE=${INSTANCES_FILE:${HOME}/k8s_contrail_command_deployment/instances_virtual.yml}
 else
     # Change this to instances_mgmt.yml if management ip needs to be used
     export INSTANCES_FILE=${INSTANCES_FILE:-${HOME}/k8s_contrail_command_deployment/instances.yml}
@@ -21,4 +21,4 @@ fi
 # Set both below as 0 when No Action is required
 export PROVISION=${PROVISION:-0}
 export IMPORT=${IMPORT:-0}
-echo "INSECURE=$INSECURE, TAG=$TAG, COMMAND_SERVER_IP=$COMMAND_SERVER_IP, PROVISION=$PROVISION, IMPORT=$IMPORT, C_FILE=$COMMAND_SERVERS_FILE, I_FILE=$INSTANCES_FILE"
+echo "INSECURE=$INSECURE, VIRTUAL_SETUP=$VIRTUAL_SETUP, TAG=$TAG, COMMAND_SERVER_IP=$COMMAND_SERVER_IP, PROVISION=$PROVISION, IMPORT=$IMPORT, C_FILE=$COMMAND_SERVERS_FILE, I_FILE=$INSTANCES_FILE"
