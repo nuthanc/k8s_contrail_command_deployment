@@ -5,7 +5,10 @@ if [ $REIMAGE -eq 1 ]
 then 
     sshpass -p 'c0ntrail123' ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -l root 10.204.217.158 "(
     set -e 
-    server-manager reimage --no_confirm --cluster_id k8s_nodeg12_ha_setup centos-7.6
+    server-manager reimage --no_confirm --server_id nodeg12 centos-7.6
+    server-manager reimage --no_confirm --server_id nodeg31 centos-7.6
+    server-manager reimage --no_confirm --server_id nodec58 centos-7.6
+    server-manager reimage --no_confirm --server_id nodec60 centos-7.6
     )"
 fi
 
