@@ -28,7 +28,6 @@ sshpass -p 'c0ntrail123' ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/
 sshpass -p 'c0ntrail123' scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -r $WORKSPACE/ root@${COMMAND_SERVER_IP}:/root/Nuthan_jenkins
 
 sshpass -p 'c0ntrail123' ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -l root $COMMAND_SERVER_IP "(
-    set -x    
 
     export WORKSPACE=$WORKSPACE
     export INSECURE=$INSECURE 
@@ -45,6 +44,7 @@ sshpass -p 'c0ntrail123' ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/
     export INSTANCES_FILE=$INSTANCES_FILE
     export WORKING_DIR=$WORKING_DIR
 
+    set -x
     docker stop contrail_command contrail_psql
     docker system prune -f
     
