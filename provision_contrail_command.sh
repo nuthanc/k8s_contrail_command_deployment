@@ -34,11 +34,11 @@ then
     fi
 
     sed -i 's/hub.juniper.net\/contrail-nightly/10.204.217.152:5010/g' $COMMAND_SERVERS_FILE
-    sed -i "s/container_tag: .*/container_tag: ${TAG}/g" $COMMAND_SERVERS_FILE
+    sed -i "s/container_tag: .*/container_tag: \"${TAG}\"/g" $COMMAND_SERVERS_FILE
 
     # Changes in instances.yml file
     sed -i "s/registry: .*/registry: 10.204.217.152:5010/g" $INSTANCES_FILE
-    sed -i "s/version: .*/version: ${CONTRAIL_VERSION}/g" $INSTANCES_FILE
+    sed -i "s/version: .*/version: \"${CONTRAIL_VERSION}\"/g" $INSTANCES_FILE
     sed -i "s/REGISTRY_PRIVATE_INSECURE: .*/REGISTRY_PRIVATE_INSECURE: True/g" $INSTANCES_FILE
     sed -i "s/CONTAINER_REGISTRY: .*/CONTAINER_REGISTRY: 10.204.217.152:5010/g" $INSTANCES_FILE
 
@@ -48,7 +48,7 @@ then
         sed -i "s/CONTAINER_REGISTRY_USERNAME/# CONTAINER_REGISTRY_USERNAME/g" $INSTANCES_FILE
         sed -i "s/CONTAINER_REGISTRY_PASSWORD/# CONTAINER_REGISTRY_PASSWORD/g" $INSTANCES_FILE
     fi
-    sed -i "s/CONTRAIL_VERSION: .*/CONTRAIL_VERSION: ${CONTRAIL_VERSION}/g" $INSTANCES_FILE
+    sed -i "s/CONTRAIL_VERSION: .*/CONTRAIL_VERSION: \"${CONTRAIL_VERSION}\"/g" $INSTANCES_FILE
 else
     export CCD_IMAGE=hub.juniper.net/contrail-nightly/contrail-command-deployer:$TAG
     docker login hub.juniper.net -u $CONTAINER_REGISTRY_USERNAME -p $CONTAINER_REGISTRY_PASSWORD
@@ -64,11 +64,11 @@ else
     fi
 
     sed -i 's/10.204.217.152:5010/hub.juniper.net\/contrail-nightly/g' $COMMAND_SERVERS_FILE
-    sed -i "s/container_tag: .*/container_tag: ${TAG}/g" $COMMAND_SERVERS_FILE
+    sed -i "s/container_tag: .*/container_tag: \"${TAG}\"/g" $COMMAND_SERVERS_FILE
 
     # Changes in instances.yml file
     sed -i "s/registry: .*/registry: hub.juniper.net\/contrail-nightly/g" $INSTANCES_FILE
-    sed -i "s/version: .*/version: ${CONTRAIL_VERSION}/g" $INSTANCES_FILE
+    sed -i "s/version: .*/version: \"${CONTRAIL_VERSION}\"/g" $INSTANCES_FILE
     sed -i "s/REGISTRY_PRIVATE_INSECURE: .*/REGISTRY_PRIVATE_INSECURE: False/g" $INSTANCES_FILE
     sed -i "s/CONTAINER_REGISTRY: .*/CONTAINER_REGISTRY: hub.juniper.net\/contrail-nightly/g" $INSTANCES_FILE
 
@@ -78,7 +78,7 @@ else
         sed -i 's/# CONTAINER_REGISTRY_USERNAME/CONTAINER_REGISTRY_USERNAME/g' $INSTANCES_FILE
         sed -i 's/# CONTAINER_REGISTRY_PASSWORD/CONTAINER_REGISTRY_PASSWORD/g' $INSTANCES_FILE
     fi
-    sed -i "s/CONTRAIL_VERSION: .*/CONTRAIL_VERSION: ${CONTRAIL_VERSION}/g" $INSTANCES_FILE
+    sed -i "s/CONTRAIL_VERSION: .*/CONTRAIL_VERSION: \"${CONTRAIL_VERSION}\"/g" $INSTANCES_FILE
 fi
 
 docker pull $CCD_IMAGE
