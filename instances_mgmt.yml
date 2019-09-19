@@ -3,7 +3,7 @@ deployment:
         kolla:
         contrail:
             branch: master
-            registry: 10.204.217.152:5010
+            registry: 10.204.217.152:5000
     sku: queens
     os: centos7
     version: 1908-47
@@ -66,7 +66,7 @@ instances:
         VROUTER_GATEWAY: 10.204.217.254
 
 REGISTRY_PRIVATE_INSECURE: True
-CONTAINER_REGISTRY: 10.204.217.152:5010
+CONTAINER_REGISTRY: 10.204.217.152:5000
 
 contrail_configuration:
   KUBERNETES_PUBLIC_FIP_POOL: {'project': 'default', 'domain': 'default-domain', 'name': '__fip_pool_public__', 'network': '__public__'}
@@ -76,7 +76,7 @@ contrail_configuration:
   CONTROL_NODES: 10.204.217.52,10.204.217.71,10.204.217.98
   KUBERNETES_API_NODES: 10.204.217.52
   KUBERNETES_API_SERVER: 10.204.217.52
-  CONTAINER_REGISTRY: 10.204.217.152:5010
+  CONTAINER_REGISTRY: 10.204.217.152:5000
   REGISTRY_PRIVATE_INSECURE: True
   CONTRAIL_VERSION: 1908-47
   RABBITMQ_NODE_PORT: 5673
