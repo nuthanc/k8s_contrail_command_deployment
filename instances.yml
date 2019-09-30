@@ -57,6 +57,13 @@ instances:
       k8s_node:
       vrouter:
         VROUTER_GATEWAY: 77.77.1.100
+  nodec61:
+    provider: bms
+    ip: 10.204.217.101
+    roles:
+      k8s_node:
+      vrouter:
+        VROUTER_GATEWAY: 77.77.1.100
 
 REGISTRY_PRIVATE_INSECURE: True
 CONTAINER_REGISTRY: 10.204.217.152:5000
@@ -141,4 +148,10 @@ control_data:
         prefix: 24
         gw: 77.77.1.100
         device: enp2s0f0
+    nodec61:
+        ip: 10.204.217.101
+        ctrldata_ip: 77.77.1.31
+        prefix: 24
+        gw: 77.77.1.100
+        device: enp2s0f1
     
