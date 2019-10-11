@@ -65,8 +65,11 @@ instances:
       vrouter:
         VROUTER_GATEWAY: 10.204.217.254
 
-REGISTRY_PRIVATE_INSECURE: True
-CONTAINER_REGISTRY: 10.204.217.152:5000
+global_configuration:
+  REGISTRY_PRIVATE_INSECURE: True
+  CONTAINER_REGISTRY: 10.204.217.152:5000
+  # CONTAINER_REGISTRY_USERNAME: JNPR-Customer200
+  # CONTAINER_REGISTRY_PASSWORD: FSg0vLW^7oM#GZy8Ju*f
 
 contrail_configuration:
   KUBERNETES_PUBLIC_FIP_POOL: {'project': 'default', 'domain': 'default-domain', 'name': '__fip_pool_public__', 'network': '__public__'}
