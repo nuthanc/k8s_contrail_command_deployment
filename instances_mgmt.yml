@@ -95,7 +95,7 @@ test_configuration:
     ext_routers:
         hooper: 10.204.217.240
     router_asn: 64512
-    public_rt: 2225
+    public_rt: 10102
     public_subnet: 10.204.221.160/29
     public_virtual_network: __public__
     fip_pool_name: __fip_pool_public__
