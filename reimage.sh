@@ -5,7 +5,7 @@ server-manager reimage --no_confirm --server_id nodec58 centos-7.7
 server-manager reimage --no_confirm --server_id nodec60 centos-7.7
 server-manager reimage --no_confirm --server_id nodec61 centos-7.7
 
-sleep 1m
+sleep 14.5m
 
 server-manager status server --cluster_id k8s_nodeg12_ha_setup|grep "reimage_started\|restart_issued"
 
