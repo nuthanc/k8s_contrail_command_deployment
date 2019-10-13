@@ -11,14 +11,16 @@ then
     server-manager reimage --no_confirm --server_id nodec60 centos-7.7
     server-manager reimage --no_confirm --server_id nodec61 centos-7.7
 
-    sleep 15m
+    sleep 1m
 
     server-manager status server --cluster_id k8s_nodeg12_ha_setup|grep "reimage_started\|restart_issued"
-
-    while [ $? -eq 0 ]
+    status=$?
+    while [ $status -eq 0 ]
     do
         sleep 10
         server-manager status server --cluster_id k8s_nodeg12_ha_setup|grep "reimage_started\|restart_issued"
+        status=$?
+        echo $status
     done
     )"
 fi
