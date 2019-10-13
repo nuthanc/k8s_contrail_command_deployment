@@ -11,6 +11,15 @@ then
     server-manager reimage --no_confirm --server_id nodec60 centos-7.7
     server-manager reimage --no_confirm --server_id nodec61 centos-7.7
     )"
+
+    sleep 15m
+
+    server-manager status server --cluster_id k8s_nodeg12_ha_setup|grep "reimage_started\|restart_issued"
+
+    while [ $? -ne 0 ]
+    do
+        sleep 10
+    done
 fi
 
 # Add nodea4 ssh-pass 
@@ -55,6 +64,8 @@ sshpass -p 'c0ntrail123' ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/
 )"
 
 sshpass -p 'c0ntrail123' ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -l root $SANITY_NODE "(
+    kubectl patch deployment coredns -n kube-system -p '{"spec":{"template":{"spec":{"containers":[{"name":"coredns", "image":"coredns/coredns:1.2.6"}]}}}}'
+
     if [ $INSECURE -eq 0 ]
     then
         docker run --entrypoint /bin/bash --network=host -it hub.juniper.net/contrail-nightly/contrail-test-test:$CONTRAIL_VERSION
