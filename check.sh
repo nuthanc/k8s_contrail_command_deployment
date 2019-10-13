@@ -1,3 +1,7 @@
-check_registry_username=`cat $COMMAND_SERVERS_FILE | grep -w "# container_registry_username"`
-echo $?
-echo $check_registry_username
+#!/bin/sh
+while [ $? -eq 0 ]
+    do
+        sleep 10
+        server-manager status server --cluster_id k8s_nodeg12_ha_setup|grep "reimage_started\|restart_issued"
+    done
+    
