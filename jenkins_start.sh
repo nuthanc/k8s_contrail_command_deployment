@@ -14,12 +14,12 @@ then
     sleep 1m
 
     server-manager status server --cluster_id k8s_nodeg12_ha_setup|grep "reimage_started\|restart_issued"
-    status=$?
+    status=`$?`
     while [ $status -eq 0 ]
     do
         sleep 10
         server-manager status server --cluster_id k8s_nodeg12_ha_setup|grep "reimage_started\|restart_issued"
-        status=$?
+        status=`$?`
         echo $status
     done
     )"
