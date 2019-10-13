@@ -4,7 +4,7 @@
 if [ $REIMAGE -eq 1 ]
 then 
     sshpass -p 'c0ntrail123' ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -l root 10.204.217.158 "(
-    set -e 
+    set -x 
     server-manager reimage --no_confirm --server_id nodeg12 centos-7.7
     server-manager reimage --no_confirm --server_id nodeg31 centos-7.7
     server-manager reimage --no_confirm --server_id nodec58 centos-7.7
