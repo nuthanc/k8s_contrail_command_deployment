@@ -93,6 +93,6 @@ else
     docker run -td --net host -v $COMMAND_SERVERS_FILE:/command_servers.yml --privileged --name contrail_command_deployer $CCD_IMAGE
 fi
 
-docker exec contrail_command tail --pid=$$ -f /var/log/ansible.log | while read file;do grep "failed=1";done
+docker exec contrail_command tail --pid=$$ -F /var/log/ansible.log | while read file;do grep "failed=1";done
 
 
