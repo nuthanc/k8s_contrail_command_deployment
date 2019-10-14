@@ -93,7 +93,7 @@ else
     docker run -td --net host -v $COMMAND_SERVERS_FILE:/command_servers.yml --privileged --name contrail_command_deployer $CCD_IMAGE
 fi
 
-docker exec -it  contrail_command bash
+docker exec -i  contrail_command bash
 while read line; do
     if [[ "${line}" =~ "failed=1" ]]; then
         echo "Provisioning failed"
