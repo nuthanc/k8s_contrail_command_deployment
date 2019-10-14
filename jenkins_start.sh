@@ -10,6 +10,7 @@ then
 else
     docker run --entrypoint /bin/bash --network=host -i 10.204.217.152:5000/contrail-test-test:$CONTRAIL_VERSION
 fi
+set -x
 sshpass -p c0ntrail123 scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -r root@${COMMAND_SERVER_IP}:${INSTANCES_FILE} /contrail-test/contrail_test_input.yaml
 export PYTHONPATH=./scripts:./fixtures TEST_CONFIG_FILE=contrail_test_input.yaml
 export MX_GW_TEST=1
