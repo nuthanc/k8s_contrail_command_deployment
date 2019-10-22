@@ -33,7 +33,7 @@ then
         sed -i "s/container_registry_password/# container_registry_password/g" $COMMAND_SERVERS_FILE
     fi
 
-    sed -i "s/hub.juniper.net\/contrail-nightly/\"${INSECURE_REGISTRY}\"/g" $COMMAND_SERVERS_FILE
+    sed -i "s/container_registry: .*/container_registry: \"${INSECURE_REGISTRY}\"/g" $COMMAND_SERVERS_FILE
     sed -i "s/container_tag: .*/container_tag: \"${TAG}\"/g" $COMMAND_SERVERS_FILE
 
     # Changes in instances.yml file
@@ -63,7 +63,7 @@ else
         sed -i 's/# container_registry_password/container_registry_password/g' $COMMAND_SERVERS_FILE
     fi
 
-    sed -i "s/\"${INSECURE_REGISTRY}\"/hub.juniper.net\/contrail-nightly/g" $COMMAND_SERVERS_FILE
+    sed -i "s/container_registry: .*/container_registry: hub.juniper.net\/contrail-nightly/g" $COMMAND_SERVERS_FILE
     sed -i "s/container_tag: .*/container_tag: \"${TAG}\"/g" $COMMAND_SERVERS_FILE
 
     # Changes in instances.yml file
