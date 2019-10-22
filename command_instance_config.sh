@@ -13,14 +13,14 @@ then
         sed -i "s/container_registry_password/# container_registry_password/g" $COMMAND_SERVERS_FILE
     fi
 
-    sed -i 's/hub.juniper.net\/contrail-nightly/10.204.217.152:5010/g' $COMMAND_SERVERS_FILE
+    sed -i "s/container_registry: .*/container_registry: \"${INSECURE_REGISTRY}\"/g" $COMMAND_SERVERS_FILE
     sed -i "s/container_tag: .*/container_tag: ${TAG}/g" $COMMAND_SERVERS_FILE
 
     # Changes in instances.yml file
-    sed -i "s/registry: .*/registry: 10.204.217.152:5010/g" $INSTANCES_FILE
+    sed -i "s/registry: .*/registry: \"${INSECURE_REGISTRY}\"/g" $INSTANCES_FILE
     sed -i "s/version: .*/version: ${CONTRAIL_VERSION}/g" $INSTANCES_FILE
     sed -i "s/REGISTRY_PRIVATE_INSECURE: .*/REGISTRY_PRIVATE_INSECURE: True/g" $INSTANCES_FILE
-    sed -i "s/CONTAINER_REGISTRY: .*/CONTAINER_REGISTRY: 10.204.217.152:5010/g" $INSTANCES_FILE
+    sed -i "s/CONTAINER_REGISTRY: .*/CONTAINER_REGISTRY: \"${INSECURE_REGISTRY}\"/g" $INSTANCES_FILE
 
     check_comment_registry=`cat $INSTANCES_FILE | grep -w "# CONTAINER_REGISTRY_USERNAME"`
     if [ $? -eq 1 ]
@@ -41,7 +41,7 @@ else
         sed -i 's/# container_registry_password/container_registry_password/g' $COMMAND_SERVERS_FILE
     fi
 
-    sed -i 's/10.204.217.152:5010/hub.juniper.net\/contrail-nightly/g' $COMMAND_SERVERS_FILE
+    sed -i "s/container_registry: .*/container_registry: hub.juniper.net\/contrail-nightly/g" $COMMAND_SERVERS_FILE
     sed -i "s/container_tag: .*/container_tag: ${TAG}/g" $COMMAND_SERVERS_FILE
 
     # Changes in instances.yml file
