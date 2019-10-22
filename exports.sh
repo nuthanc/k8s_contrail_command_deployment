@@ -1,5 +1,6 @@
 #!/bin/sh -ex
 export INSECURE=${INSECURE:-1} # Make this 0 if hub.juniper.net is used
+export INSECURE_REGISTRY=${INSECURE_REGISTRY:-10.204.217.152:5000}
 export TAG=${TAG:-1909-13} # Use the appropriate tag for contrail-command
 export CONTRAIL_VERSION=${CONTRAIL_VERSION:-1909-13}
 export COMMAND_SERVER_IP=${COMMAND_SERVER_IP:-10.204.216.120} #THIS IS nodea4
