@@ -24,7 +24,8 @@ sshpass -p 'c0ntrail123' scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/
 sshpass -p 'c0ntrail123' ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -l root $COMMAND_SERVER_IP "(
 
     export WORKSPACE=$WORKSPACE
-    export INSECURE=$INSECURE 
+    export INSECURE=$INSECURE
+    export INSECURE_REGISTRY=$INSECURE_REGISTRY 
     export TAG=$TAG 
     export CONTRAIL_VERSION=$CONTRAIL_VERSION
     export COMMAND_SERVER_IP=$COMMAND_SERVER_IP
