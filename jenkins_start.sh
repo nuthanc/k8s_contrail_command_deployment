@@ -2,7 +2,7 @@
 
 sshpass -p 'c0ntrail123' ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -l root $SANITY_NODE <<EOF
 set -ex
-Fix applied from 1911.7
+# Fix applied from 1911.7
 # kubectl patch deployment coredns -n kube-system -p '{"spec":{"template":{"spec":{"containers":[{"name":"coredns", "image":"coredns/coredns:1.2.6"}]}}}}'
 
 if [ $INSECURE -eq 0 ]
