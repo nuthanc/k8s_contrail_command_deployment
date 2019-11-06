@@ -10,15 +10,14 @@ fi
 echo "Jenkins Workspace: $WORKSPACE"
 
 
-sshpass -p 'c0ntrail123' ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -l root $COMMAND_SERVER_IP << EOF
+sshpass -p 'c0ntrail123' ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -l root $COMMAND_SERVER_IP "(
     set -ex
 
     if [ -d "/root/Nuthan_jenkins" ]
     then
         rm -rf /root/Nuthan_jenkins
     fi
-    mkdir /root/Nuthan_jenkins
-EOF
+)"
 
 sshpass -p 'c0ntrail123' scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -r $WORKSPACE/ root@${COMMAND_SERVER_IP}:/root/Nuthan_jenkins
 
