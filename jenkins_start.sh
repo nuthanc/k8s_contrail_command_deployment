@@ -16,6 +16,7 @@ sshpass -p 'c0ntrail123' ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/
     if [ -d "/root/Nuthan_jenkins" ]
     then
         rm -rf /root/Nuthan_jenkins
+        mkdir /root/Nuthan_jenkins
     fi
 EOF
 
