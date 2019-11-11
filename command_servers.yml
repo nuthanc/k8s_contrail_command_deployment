@@ -1,6 +1,6 @@
 command_servers:
     server1:
-        ip: 10.204.216.120 # nodea4 ip
+        ip: 10.204.216.120
         connection: ssh
         ssh_user: root
         ssh_pass: c0ntrail123

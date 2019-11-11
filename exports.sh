@@ -1,13 +1,12 @@
 #!/bin/sh -ex
 export INSECURE=1 # Make this 0 if hub.juniper.net is used
-export TAG=1909-13 # Use the appropriate tag for contrail-command
-export CONTRAIL_VERSION=1909-13
+export TAG=1911.21 # Use the appropriate tag for contrail-command
+export CONTRAIL_VERSION=1911.21
 export COMMAND_SERVER_IP=10.204.216.120 #THIS IS nodea4
 # The below two if hub.juniper.net is used
 export CONTAINER_REGISTRY_USERNAME=JNPR-Customer200
 export CONTAINER_REGISTRY_PASSWORD=FSg0vLW^7oM#GZy8Ju*f
-export REIMAGE=0
-export VIRTUAL_SETUP=1 # Make this 0 if nodeg12 setup is used
+export VIRTUAL_SETUP=0 # Make this 0 if nodeg12 setup is used
 
 export COMMAND_SERVERS_FILE=${HOME}/k8s_contrail_command_deployment/command_servers.yml
 
