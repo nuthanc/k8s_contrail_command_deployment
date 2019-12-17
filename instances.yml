@@ -88,6 +88,10 @@ contrail_configuration:
   JVM_EXTRA_OPTS: "-Xms1g -Xmx2g"
   LOG_LEVEL: SYS_DEBUG
   VNC_CURL_LOG_NAME: vnc_logs_k8s.log
+  CONFIG_NODEMGR__DEFAULTS__minimum_diskGB: "2"
+  DATABASE_NODEMGR__DEFAULTS__minimum_diskGB: "2"
+  CONFIG_DATABASE_NODEMGR__DEFAULTS__minimum_diskGB: "2"
+
 
 test_configuration:
     cfgm0_host_string: root@10.204.217.52

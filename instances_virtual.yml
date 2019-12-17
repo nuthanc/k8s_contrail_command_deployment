@@ -86,6 +86,10 @@ contrail_configuration:
   VROUTER_GATEWAY: 192.168.1.11
   JVM_EXTRA_OPTS: "-Xms1g -Xmx2g"
   LOG_LEVEL: SYS_DEBUG
+  CONFIG_NODEMGR__DEFAULTS__minimum_diskGB: "2"
+  DATABASE_NODEMGR__DEFAULTS__minimum_diskGB: "2"
+  CONFIG_DATABASE_NODEMGR__DEFAULTS__minimum_diskGB: "2"
+
 
 test_configuration:
     cfgm0_host_string: root@10.204.218.103
