@@ -2,7 +2,7 @@ deployment:
     type:
         contrail:
             branch: master
-            registry: 10.204.217.152:5000
+            registry: bng-artifactory.juniper.net/contrail-nightly
     sku: queens
     os: centos7
     version: 1909-13
@@ -65,7 +65,7 @@ instances:
         VROUTER_GATEWAY: 192.168.1.11
 
 REGISTRY_PRIVATE_INSECURE: True
-CONTAINER_REGISTRY: 10.204.217.152:5000
+CONTAINER_REGISTRY: bng-artifactory.juniper.net/contrail-nightly
 # CONTAINER_REGISTRY_USERNAME: JNPR-Customer200
 # CONTAINER_REGISTRY_PASSWORD: FSg0vLW^7oM#GZy8Ju*f
 
@@ -77,7 +77,7 @@ contrail_configuration:
   CONTROL_NODES: 192.168.1.5,192.168.1.8,192.168.1.9
   KUBERNETES_API_NODES: 192.168.1.5
   KUBERNETES_API_SERVER: 192.168.1.5 
-  CONTAINER_REGISTRY: 10.204.217.152:5000
+  CONTAINER_REGISTRY: bng-artifactory.juniper.net/contrail-nightly
   # CONTAINER_REGISTRY_USERNAME: JNPR-Customer200
   # CONTAINER_REGISTRY_PASSWORD: FSg0vLW^7oM#GZy8Ju*f
   REGISTRY_PRIVATE_INSECURE: True

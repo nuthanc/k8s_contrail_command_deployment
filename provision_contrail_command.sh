@@ -19,9 +19,9 @@ sed -i "s/ip: .*/ip: ${COMMAND_SERVER_IP}/g" $COMMAND_SERVERS_FILE
 # Insecure and secure logic
 if [ $INSECURE -eq 1 ]
 then
-    echo '{"insecure-registries": ["10.204.217.152:5010","10.204.217.152:5000"]}' > /etc/docker/daemon.json
+    echo '{"insecure-registries": ["bng-artifactory.juniper.net","10.204.217.152:5000"]}' > /etc/docker/daemon.json
     systemctl reload docker
-    export CCD_IMAGE=10.204.217.152:5000/contrail-command-deployer:$TAG
+    export CCD_IMAGE=bng-artifactory.juniper.net/contrail-nightly/contrail-command-deployer:$TAG
 
     # Changes in the command_servers.yml file and note the single quote and double quote differences
     sed -i 's/registry_insecure\: false/registry_insecure\: true/g' $COMMAND_SERVERS_FILE
@@ -33,14 +33,14 @@ then
         sed -i "s/container_registry_password/# container_registry_password/g" $COMMAND_SERVERS_FILE
     fi
 
-    sed -i 's/hub.juniper.net\/contrail-nightly/10.204.217.152:5000/g' $COMMAND_SERVERS_FILE
+    sed -i 's/hub.juniper.net\/contrail-nightly/bng-artifactory.juniper.net\/contrail-nightly/g' $COMMAND_SERVERS_FILE
     sed -i "s/container_tag: .*/container_tag: \"${TAG}\"/g" $COMMAND_SERVERS_FILE
 
     # Changes in instances.yml file
-    sed -i "s/registry: .*/registry: 10.204.217.152:5000/g" $INSTANCES_FILE
+    sed -i "s/registry: .*/registry: bng-artifactory.juniper.net\/contrail-nightly/g" $INSTANCES_FILE
     sed -i "s/version: .*/version: \"${CONTRAIL_VERSION}\"/g" $INSTANCES_FILE
     sed -i "s/REGISTRY_PRIVATE_INSECURE: .*/REGISTRY_PRIVATE_INSECURE: True/g" $INSTANCES_FILE
-    sed -i "s/CONTAINER_REGISTRY: .*/CONTAINER_REGISTRY: 10.204.217.152:5000/g" $INSTANCES_FILE
+    sed -i "s/CONTAINER_REGISTRY: .*/CONTAINER_REGISTRY: bng-artifactory.juniper.net\/contrail-nightly/g" $INSTANCES_FILE
 
     check_comment_registry=`cat $INSTANCES_FILE | grep -w "# CONTAINER_REGISTRY_USERNAME"`
     if [ $? -eq 1 ]
@@ -63,7 +63,7 @@ else
         sed -i 's/# container_registry_password/container_registry_password/g' $COMMAND_SERVERS_FILE
     fi
 
-    sed -i 's/10.204.217.152:5000/hub.juniper.net\/contrail-nightly/g' $COMMAND_SERVERS_FILE
+    sed -i 's/bng-artifactory.juniper.net\/contrail-nightly/hub.juniper.net\/contrail-nightly/g' $COMMAND_SERVERS_FILE
     sed -i "s/container_tag: .*/container_tag: \"${TAG}\"/g" $COMMAND_SERVERS_FILE
 
     # Changes in instances.yml file
