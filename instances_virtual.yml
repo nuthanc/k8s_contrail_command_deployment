@@ -128,18 +128,18 @@ vm_info:
   default:
     image_dest: /mnt/disk1/images/
     disk_format: qcow2
-    image_source: http://10.204.217.158/images/node_vm_images/centos-7.5-backward-compatible.qcow2.gz
+    image_source: http://10.204.217.158/images/node_vm_images/vcentos-7.7.qcow2.gz
   hypervisors:      
-    kvm_nodel2:
+    kvm_noden31:
       username: root
-      ip: 10.204.218.250
+      ip: 10.204.218.106
       password: c0ntrail123
       vm_config:
         host1:
           name: testbed-1-vm1 
           ram: 16384
           vcpus: 8
-          server: 10.204.218.250
+          server: 10.204.218.106
           network:
             interfaces:
               intf1:
@@ -153,8 +153,8 @@ vm_info:
         host2:
           name: testbed-1-vm2
           ram: 8192
-          vcpus: 4
-          server: 10.204.218.250
+          vcpus: 8
+          server: 10.204.218.106
           network:
             interfaces:
               intf1:
@@ -169,7 +169,7 @@ vm_info:
           name: testbed-1-vm3
           ram: 8192
           vcpus: 8
-          server: 10.204.218.250
+          server: 10.204.218.106
           network:
             interfaces:
               intf1:
@@ -180,6 +180,11 @@ vm_info:
                 bridge: br1
                 mac: '52:54:00:02:00:03'
                 model: virtio
+    kvm_nodel2:
+      username: root
+      ip: 10.204.218.250
+      password: c0ntrail123
+      vm_config:
         host4:
           name: testbed-1-vm4
           ram: 16384
