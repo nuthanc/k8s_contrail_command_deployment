@@ -21,7 +21,7 @@ sshpass -p 'c0ntrail123' ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/
 
 sshpass -p 'c0ntrail123' scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -r $WORKSPACE/ root@${COMMAND_SERVER_IP}:/root/Nuthan_jenkins
 
-sshpass -p 'c0ntrail123' ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -l root $COMMAND_SERVER_IP "(
+sshpass -p 'c0ntrail123' ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -l root $COMMAND_SERVER_IP <<EOF
 
     export WORKSPACE=$WORKSPACE
     export INSECURE=$INSECURE 
@@ -45,8 +45,7 @@ sshpass -p 'c0ntrail123' ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/
     
     source ${WORKING_DIR}/exports.sh
     source ${WORKING_DIR}/provision_contrail_command.sh
-    
-)"
+EOF
 
 # source exports.sh
 # source provision_contrail_command.sh
