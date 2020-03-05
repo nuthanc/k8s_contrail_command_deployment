@@ -39,8 +39,9 @@ sshpass -p 'c0ntrail123' ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/
     export WORKING_DIR=$WORKING_DIR
 
     set -x
-    docker stop contrail_command contrail_psql
+    docker stop $(docker ps -a -q) 
     docker system prune -f
+    docker rmi $(docker images -a -q)
     
     source ${WORKING_DIR}/exports.sh
     source ${WORKING_DIR}/provision_contrail_command.sh
