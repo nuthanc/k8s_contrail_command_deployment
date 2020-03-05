@@ -39,9 +39,9 @@ sshpass -p 'c0ntrail123' ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/
     export WORKING_DIR=$WORKING_DIR
 
     set -x
-    docker stop $(docker ps -a -q) 
+    docker stop $(docker ps -a -q) || true
     docker system prune -f
-    docker rmi $(docker images -a -q)
+    docker rmi $(docker images -a -q) || true
     
     source ${WORKING_DIR}/exports.sh
     source ${WORKING_DIR}/provision_contrail_command.sh
