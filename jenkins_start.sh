@@ -10,19 +10,12 @@ fi
 echo "Jenkins Workspace: $WORKSPACE"
 
 
-sshpass -p 'c0ntrail123' ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -l root $COMMAND_SERVER_IP "(
-    set -ex
+sshpass -p 'c0ntrail123' ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -l root $COMMAND_SERVER_IP "bash -s" <./remove.sh
 
-    if [ -d "/root/Nuthan_jenkins" ]
-    then
-        rm -rf /root/Nuthan_jenkins
-    fi
-)"
 
 sshpass -p 'c0ntrail123' scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -r $WORKSPACE/ root@${COMMAND_SERVER_IP}:/root/Nuthan_jenkins
 
 sshpass -p 'c0ntrail123' ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -l root $COMMAND_SERVER_IP "(
-
     export WORKSPACE=$WORKSPACE
     export INSECURE=$INSECURE 
     export TAG=$TAG 
@@ -38,14 +31,8 @@ sshpass -p 'c0ntrail123' ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/
     export INSTANCES_FILE=$INSTANCES_FILE
     export WORKING_DIR=$WORKING_DIR
 
-    set -x
-    docker stop $(docker ps -a -q) 
-    docker system prune -f
-    docker rmi $(docker images -a -q)
-    
     source ${WORKING_DIR}/exports.sh
     source ${WORKING_DIR}/provision_contrail_command.sh
-    
 )"
 
 # source exports.sh
