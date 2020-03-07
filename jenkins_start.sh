@@ -30,7 +30,7 @@ sshpass -p 'c0ntrail123' ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/
     export COMMAND_SERVERS_FILE=$COMMAND_SERVERS_FILE
     export INSTANCES_FILE=$INSTANCES_FILE
     export WORKING_DIR=$WORKING_DIR
-
+    set -x
     source ${WORKING_DIR}/exports.sh
     source ${WORKING_DIR}/provision_contrail_command.sh
 )"
