@@ -7,6 +7,6 @@ fi
 
 docker stop $(docker ps -a -q) || true
 docker system prune -f
-docker rmi $(docker images -a -q) || true
+#docker rmi $(docker images -a -q) || true
     
 
