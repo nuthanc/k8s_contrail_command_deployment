@@ -6,7 +6,7 @@ then
 fi
 
 docker stop $(docker ps -a -q) || true
-docker system prune -f
+docker system prune -f || true
 #docker rmi $(docker images -a -q) || true
     
 
