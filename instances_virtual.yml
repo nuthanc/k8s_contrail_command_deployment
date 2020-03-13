@@ -70,7 +70,7 @@ global_configuration:
 
 contrail_configuration:
   KUBERNETES_PUBLIC_FIP_POOL: {'project': 'k8s-default', 'domain': 'default-domain', 'name': '__fip_pool_public__', 'network': '__public__'}
-  KUBERNETES_IP_FABRIC_SUBNETS: 192.168.1.64/29
+  KUBERNETES_IP_FABRIC_SUBNETS: 192.168.20.64/29
   CLOUD_ORCHESTRATOR: kubernetes
   CONTROLLER_NODES: 10.204.218.103,10.204.218.100,10.204.218.101
   CONTROL_NODES: 192.168.20.5,192.168.20.8,192.168.20.9
