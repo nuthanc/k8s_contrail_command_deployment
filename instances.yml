@@ -9,6 +9,10 @@ deployment:
     orchestrator: kubernetes
     deployer: contrail-ansible-deployer
 
+global_configuration:
+  REGISTRY_PRIVATE_INSECURE: True
+  CONTAINER_REGISTRY: bng-artifactory.juniper.net/contrail-nightly
+  K8S_VERSION: 1.14.8
 provider_config:
   bms:
     ssh_pwd: c0ntrail123
@@ -65,8 +69,6 @@ instances:
       vrouter:
         VROUTER_GATEWAY: 77.77.1.100
 
-REGISTRY_PRIVATE_INSECURE: True
-CONTAINER_REGISTRY: 10.204.217.152:5000
 # CONTAINER_REGISTRY_USERNAME: JNPR-Customer200
 # CONTAINER_REGISTRY_PASSWORD: FSg0vLW^7oM#GZy8Ju*f
 
