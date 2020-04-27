@@ -1,7 +1,6 @@
 global_configuration:
   REGISTRY_PRIVATE_INSECURE: True
   CONTAINER_REGISTRY: bng-artifactory.juniper.net/contrail-nightly
-  K8S_VERSION: 1.14.8
 provider_config:
   bms:
     ssh_pwd: c0ntrail123

@@ -67,7 +67,6 @@ instances:
 global_configuration:
   REGISTRY_PRIVATE_INSECURE: True
   CONTAINER_REGISTRY: bng-artifactory.juniper.net/contrail-nightly
-  K8S_VERSION: 1.14.8
 
 contrail_configuration:
   KUBERNETES_PUBLIC_FIP_POOL: {'project': 'k8s-default', 'domain': 'default-domain', 'name': '__fip_pool_public__', 'network': '__public__'}
