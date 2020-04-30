@@ -28,13 +28,6 @@ instances:
       k8s_node:
       vrouter:
         VROUTER_GATEWAY: 10.204.217.254
-  nodei18:
-    provider: bms
-    ip: 10.204.217.130
-    roles:
-      k8s_node:
-      vrouter:
-        VROUTER_GATEWAY: 10.204.217.254
 contrail_configuration:
   KUBERNETES_PUBLIC_FIP_POOL: {'project': 'k8s-default', 'domain': 'default-domain', 'name': '__fip_pool_public__', 'network': '__public__'}
   KUBERNETES_IP_FABRIC_SUBNETS: 10.204.217.64/27
