@@ -1,11 +1,11 @@
 deployment:
   type:
       contrail:
-          branch: R2005
+          branch: 1912
           registry: bng-artifactory.juniper.net/contrail-nightly
   sku: queens
   os: centos7
-  version: "2005.1" 
+  version: "2005.62"
   orchestrator: kubernetes
   deployer: 
 provider_config:
@@ -67,6 +67,8 @@ testbed-1-vm3:
 global_configuration:
 REGISTRY_PRIVATE_INSECURE: True
 CONTAINER_REGISTRY: bng-artifactory.juniper.net/contrail-nightly
+# CONTAINER_REGISTRY_USERNAME: JNPR-Customer200
+# CONTAINER_REGISTRY_PASSWORD: FSg0vLW^7oM#GZy8Ju*f
 
 contrail_configuration:
 KUBERNETES_PUBLIC_FIP_POOL: {'project': 'k8s-default', 'domain': 'default-domain', 'name': '__fip_pool_public__', 'network': '__public__'}
@@ -77,8 +79,10 @@ CONTROL_NODES: 192.168.20.5,192.168.20.8,192.168.20.9
 KUBERNETES_API_NODES: 192.168.20.5
 KUBERNETES_API_SERVER: 192.168.20.5 
 CONTAINER_REGISTRY: bng-artifactory.juniper.net/contrail-nightly
+# CONTAINER_REGISTRY_USERNAME: JNPR-Customer200
+# CONTAINER_REGISTRY_PASSWORD: FSg0vLW^7oM#GZy8Ju*f
 REGISTRY_PRIVATE_INSECURE: True
-CONTRAIL_VERSION: "2005.1" 
+CONTRAIL_VERSION: "2005.62"
 RABBITMQ_NODE_PORT: 5673
 VROUTER_GATEWAY: 192.168.20.11
 JVM_EXTRA_OPTS: "-Xms1g -Xmx2g"

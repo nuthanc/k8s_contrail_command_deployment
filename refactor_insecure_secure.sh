@@ -1,23 +1,3 @@
-#!/bin/sh -ex 
-
-# This file is until step 9
-# Install docker
-function docker_install() {
-  if [ -x "$(command -v docker)" ]
-  then
-    echo "Docker already installed"
-  else
-    yum install -y yum-utils device-mapper-persistent-data lvm2
-    yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-    yum install -y docker-ce-18.03.1.ce
-    systemctl start docker
-  fi
-}
-
-function change_command_server_ip() {
-  sed -i "s/ip: .*/ip: ${COMMAND_SERVER_IP}/g" $COMMAND_SERVERS_FILE
-}
-
 function command_server_changes() {
   REGISTRY_INSECURE_TRUE="registry_insecure: true"
   REGISTRY_INSECURE_FALSE="registry_insecure: false"
@@ -126,28 +106,10 @@ function insecure_secure_config() {
   instances_changes
 }
 
-function docker_pull_and_execute() {
-  docker pull $CCD_IMAGE
-
-  if [ $PROVISION -eq 1 ]
-  then
-      docker run -t --net host -e orchestrator=kubernetes -e action=provision_cluster -v $COMMAND_SERVERS_FILE:/command_servers.yml -v $INSTANCES_FILE:/instances.yml -d --privileged --name contrail_command_deployer $CCD_IMAGE
-  elif [ $IMPORT -eq 1 ]
-  then
-      docker run -t --net host -e orchestrator=kubernetes -e action=import_cluster -v $COMMAND_SERVERS_FILE:/command_servers.yml -v $INSTANCES_FILE:/instances.yml -d --privileged --name contrail_command_deployer $CCD_IMAGE
-  else
-      docker run -td --net host -v $COMMAND_SERVERS_FILE:/command_servers.yml --privileged --name contrail_command_deployer $CCD_IMAGE
-  fi
-}
-
 function change_contrail_branch_in_instances(){
   OLD_BRANCH="branch: .*"
   BRANCH="branch: ${CONTRAIL_VERSION%%.*}"
   sed -i "s/${OLD_BRANCH}/${BRANCH}/g" $INSTANCES_FILE
 }
 
-docker_install
-change_command_server_ip
-insecure_secure_config
 change_contrail_branch_in_instances
-docker_pull_and_execute
