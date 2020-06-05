@@ -33,28 +33,28 @@ function command_server_changes() {
   # For bng repo
   if [ $INSECURE -eq 1 ]
   then
-    is_registry_commented=`cat command_servers.yml | grep -w "# container_registry_username"`
+    is_registry_commented=`cat $COMMAND_SERVERS_FILE | grep -w "# container_registry_username"`
     if [ $? -eq 1 ] # If it is uncommented, comment it
     then
       sed -i -e "s/${UNCOMMENTED_USERNAME}/${COMMENTED_USERNAME}/g" \
-      -e "s/${UNCOMMENTED_PASSWORD}/${COMMENTED_PASSWORD}/g" command_servers.yml
+      -e "s/${UNCOMMENTED_PASSWORD}/${COMMENTED_PASSWORD}/g" $COMMAND_SERVERS_FILE
     fi
     sed -i -e "s/${REGISTRY_INSECURE_FALSE}/${REGISTRY_INSECURE_TRUE}/g" \
     -e "s/${HUB_JUNIPER}/${BNG_ARTIFACTORY}/g" \
-    -e "s/${OLD_CONTAINER_TAG}/${CONTAINER_TAG}/g" command_servers.yml
+    -e "s/${OLD_CONTAINER_TAG}/${CONTAINER_TAG}/g" $COMMAND_SERVERS_FILE
     
   # For hub.juniper repo
   else
-    is_registry_commented=`cat command_servers.yml | grep -w "# container_registry_username"`
+    is_registry_commented=`cat $COMMAND_SERVERS_FILE | grep -w "# container_registry_username"`
     if [ $? -eq 0 ] # If commented registry present, uncomment it
     then
       sed -i -e "s/${COMMENTED_USERNAME}/${UNCOMMENTED_USERNAME}/g" \
-      -e "s/${COMMENTED_PASSWORD}/${UNCOMMENTED_PASSWORD}/g" command_servers.yml
+      -e "s/${COMMENTED_PASSWORD}/${UNCOMMENTED_PASSWORD}/g" $COMMAND_SERVERS_FILE
     fi
 
     sed -i -e "s/${REGISTRY_INSECURE_TRUE}/${REGISTRY_INSECURE_FALSE}/g" \
     -e "s/${BNG_ARTIFACTORY}/${HUB_JUNIPER}/g" \
-    -e "s/${OLD_CONTAINER_TAG}/${CONTAINER_TAG}/g" command_servers.yml
+    -e "s/${OLD_CONTAINER_TAG}/${CONTAINER_TAG}/g" $COMMAND_SERVERS_FILE
   fi
 }
 
@@ -131,12 +131,12 @@ function docker_pull_and_execute() {
 
   if [ $PROVISION -eq 1 ]
   then
-      docker run -t --net host -e orchestrator=kubernetes -e action=provision_cluster -v $COMMAND_SERVERS_FILE:/command_servers.yml -v $INSTANCES_FILE:/instances.yml -d --privileged --name contrail_command_deployer $CCD_IMAGE
+      docker run -t --net host -e orchestrator=kubernetes -e action=provision_cluster -v $COMMAND_SERVERS_FILE:/$COMMAND_SERVERS_FILE -v $INSTANCES_FILE:/instances.yml -d --privileged --name contrail_command_deployer $CCD_IMAGE
   elif [ $IMPORT -eq 1 ]
   then
-      docker run -t --net host -e orchestrator=kubernetes -e action=import_cluster -v $COMMAND_SERVERS_FILE:/command_servers.yml -v $INSTANCES_FILE:/instances.yml -d --privileged --name contrail_command_deployer $CCD_IMAGE
+      docker run -t --net host -e orchestrator=kubernetes -e action=import_cluster -v $COMMAND_SERVERS_FILE:/$COMMAND_SERVERS_FILE -v $INSTANCES_FILE:/instances.yml -d --privileged --name contrail_command_deployer $CCD_IMAGE
   else
-      docker run -td --net host -v $COMMAND_SERVERS_FILE:/command_servers.yml --privileged --name contrail_command_deployer $CCD_IMAGE
+      docker run -td --net host -v $COMMAND_SERVERS_FILE:/$COMMAND_SERVERS_FILE --privileged --name contrail_command_deployer $CCD_IMAGE
   fi
 }
 
