@@ -81,12 +81,12 @@ function instances_changes() {
     if [ $? -eq 1 ]
     then
         sed -i -e "s/${UNCOMMENTED_USERNAME}/${COMMENTED_USERNAME}/g" \
-        -e "s/${UNCOMMENTED_PASSWORD}/${COMMENTED_PASSWORD}/g" \
-        -e "s/${OLD_VERSION}/${VERSION}/g" \
-        -e "s/${OLD_CONTRAIL_VERSION}/${CONTRAIL_VERSION}/g" $INSTANCES_FILE
+        -e "s/${UNCOMMENTED_PASSWORD}/${COMMENTED_PASSWORD}/g" $INSTANCES_FILE
     fi
     sed -i -e "s/${OLD_REGISTRY}/${REGISTRY}/g" \
     -e "s/${OLD_REGISTRY_PRIVATE_INSECURE}/${REGISTRY_PRIVATE_INSECURE}/g" \
+    -e "s/${OLD_VERSION}/${VERSION}/g" \
+    -e "s/${OLD_CONTRAIL_VERSION}/${CONTRAIL_VERSION}/g" \
     -e "s/${OLD_CONTAINER_REGISTRY}/${CONTAINER_REGISTRY}/g" $INSTANCES_FILE
 
   # For hub.juniper
@@ -99,12 +99,12 @@ function instances_changes() {
     if [ $? -eq 0 ]
     then
         sed -i -e "s/${COMMENTED_USERNAME}/${UNCOMMENTED_USERNAME}/g" \
-        -e "s/${COMMENTED_PASSWORD}/${UNCOMMENTED_PASSWORD}/g" \
-        -e "s/${OLD_VERSION}/${VERSION}/g" \
-        -e "s/${OLD_CONTRAIL_VERSION}/${CONTRAIL_VERSION}/g" $INSTANCES_FILE
+        -e "s/${COMMENTED_PASSWORD}/${UNCOMMENTED_PASSWORD}/g" $INSTANCES_FILE
     fi
     sed -i -e "s/${OLD_REGISTRY}/${REGISTRY}/g" \
     -e "s/${OLD_REGISTRY_PRIVATE_INSECURE}/${REGISTRY_PRIVATE_INSECURE}/g" \
+    -e "s/${OLD_VERSION}/${VERSION}/g" \
+    -e "s/${OLD_CONTRAIL_VERSION}/${CONTRAIL_VERSION}/g" \
     -e "s/${OLD_CONTAINER_REGISTRY}/${CONTAINER_REGISTRY}/g" $INSTANCES_FILE
 
   fi
