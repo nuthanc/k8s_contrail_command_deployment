@@ -143,7 +143,12 @@ function docker_pull_and_execute() {
 function change_contrail_branch_in_instances(){
   OLD_BRANCH="branch: .*"
   BRANCH="branch: ${CONTRAIL_VERSION%%.*}"
-  sed -i "s/${OLD_BRANCH}/${BRANCH}/g" $INSTANCES_FILE
+  if [[ "$BRANCH" =~ master ]];then
+    sed -i "s/${OLD_BRANCH}/${BRANCH}/g" $INSTANCES_FILE
+  else
+    BRANCH="branch: R${CONTRAIL_VERSION%%.*}"
+    sed -i "s/${OLD_BRANCH}/${BRANCH}/g" $INSTANCES_FILE
+  fi
 }
 
 docker_install
