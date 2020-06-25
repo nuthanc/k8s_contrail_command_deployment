@@ -148,6 +148,12 @@ function change_contrail_branch_in_instances(){
 
 docker_install
 change_command_server_ip
-insecure_secure_config
 change_contrail_branch_in_instances
+insecure_secure_config
 docker_pull_and_execute
+
+# Debugging file changes only
+# change_command_server_ip
+# command_server_changes
+# change_contrail_branch_in_instances
+# instances_changes
