@@ -63,11 +63,6 @@ instances:
       k8s_node:
       vrouter:
         VROUTER_GATEWAY: 192.168.20.11
-  nodea35:
-    provider: bms
-    ip: 10.204.216.31
-    roles:
-      contrail_command:
         
 global_configuration:
   REGISTRY_PRIVATE_INSECURE: True
