@@ -23,8 +23,9 @@ command_servers:
           data:
             users:
               admin:
-                password: contrail123
+                id: admin
+                password: c0ntrail123
       insecure: true
       auth_type: basic-auth
       client:
-        password: contrail123
+        password: c0ntrail123
