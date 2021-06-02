@@ -16,9 +16,9 @@ provider_config:
     ntpserver: 10.204.217.158
     domainsuffix: englab.juniper.net
 instances:
-  nodeg12:
+  nodea4:
     provider: bms
-    ip: 10.204.217.52
+    ip: 10.204.216.120
     roles:
       config_database:
       config:
@@ -70,10 +70,10 @@ global_configuration:
   CONTAINER_REGISTRY: bng-artifactory.juniper.net/contrail-nightly
 
 contrail_configuration:
-  KUBERNETES_PUBLIC_FIP_POOL: {'project': 'default', 'domain': 'default-domain', 'name': '__fip_pool_public__', 'network': '__public__'}
+  KUBERNETES_PUBLIC_FIP_POOL: {'project': 'k8s-default', 'domain': 'default-domain', 'name': '__fip_pool_public__', 'network': '__public__'}
   KUBERNETES_IP_FABRIC_SUBNETS: 77.77.1.160/27
   CLOUD_ORCHESTRATOR: kubernetes
-  CONTROLLER_NODES: 10.204.217.52,10.204.217.71,10.204.217.8
+  CONTROLLER_NODES: 10.204.216.120,10.204.217.71,10.204.217.8
   CONTROL_NODES: 77.77.1.20,77.77.1.30,77.77.1.11
   KUBERNETES_API_NODES: 77.77.1.20
   KUBERNETES_API_SERVER: 77.77.1.20
@@ -90,17 +90,17 @@ contrail_configuration:
   CONFIG_DATABASE_NODEMGR__DEFAULTS__minimum_diskGB: "2"
 
 test_configuration:
-    cfgm0_host_string: root@10.204.217.52
+    cfgm0_host_string: root@10.204.216.120
     cfgm0_host_pwd: c0ntrail123
-    #cluster_id: k8s_nodeg12_ha_setup
+    cluster_id: k8s_nodeg12_ha_setup
     image_web_server: 10.84.5.120
     use_project_scoped_token: True
     public_host: 10.84.5.120
     ext_routers:
         hooper: 77.77.1.100
     router_asn: 64512
-    public_rt: 11314
-    public_subnet: 10.204.219.96/29
+    public_rt: 57258
+    public_subnet: 10.204.220.192/29
     public_virtual_network: __public__
     fip_pool_name: __fip_pool_public__
     web_server:
@@ -113,7 +113,7 @@ test_configuration:
     mail_server:
         server: 10.47.226.20
         port: 25
-        to: dl-contrail-sw-in@juniper.net
+        to: dl-contrail-sw-in@juniper.net, contrail-test-team@juniper.net
         sender: contrailbuild@juniper.net
 
 server_manager:
@@ -124,8 +124,8 @@ server_manager:
   client: /cs-shared/server-manager/client/server-manager
 
 control_data:
-    nodeg12:
-        ip: 10.204.217.52
+    nodea4:
+        ip: 10.204.216.120
         ctrldata_ip: 77.77.1.20
         prefix: 24
         gw: 77.77.1.100
@@ -154,4 +154,3 @@ control_data:
         prefix: 24
         gw: 77.77.1.100
         device: enp2s0f1
-
